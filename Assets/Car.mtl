@@ -1,0 +1,72 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl Chapman73_Body
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+
+newmtl GEN4DR_INTERIOR
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd C:/Users/somkr/Downloads/american-fullsize-73-low-poly-model/HD_Materials/GEN4DR_INTERIOR_dif.jpg
+
+newmtl Numberplates_Generic_USA
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd C:/Users/somkr/Downloads/american-fullsize-73-low-poly-model/HD_Materials/Numberplates_Generic_USA_dif.jpg
+
+newmtl RB1c_Tire
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd C:/Users/somkr/Downloads/american-fullsize-73-low-poly-model/HD_Materials/RB1c_Tire_dif.jpg
+
+newmtl Riverside88_lights
+Ns 21.435465
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd C:/Users/somkr/Downloads/american-fullsize-73-low-poly-model/HD_Materials/Riverside88_lights_dif.jpg
+
+newmtl UCB_BOTTOM_LT
+Ns 20.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd C:/Users/somkr/Downloads/american-fullsize-73-low-poly-model/HD_Materials/UCB_BOTTOM_LT_DIF.png
+
+newmtl UCB_GLASS_CLEAN
+Ns 45.947933
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd C:/Users/somkr/Downloads/american-fullsize-73-low-poly-model/HD_Materials/UCB_GLASS_CLEAN_dif.png
