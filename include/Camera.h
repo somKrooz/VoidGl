@@ -12,6 +12,11 @@ public:
     glm::vec3 Up;
     glm::mat4 CameraMatrix;
 
+    float Yaw = -90.0f;
+    float Pitch = 0.0f;
+    float MouseSensitivity = 0.08f;
+    void UpdateVectors();
+
     Camera();
     static std::unordered_map<int, bool> KeyStates;
 
@@ -19,6 +24,10 @@ public:
     void UpdateCamera(float deltatime);
     static void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
     glm::mat4 getCameraMatrix();
+
+    static void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+    void ProcessMouseMovement(float xOffset, float yOffset);
+
 };
 
 extern Camera* CurrentCamera;

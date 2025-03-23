@@ -44,6 +44,10 @@ void Renderer::MainLoop(GLuint ShaderProgram ,Scene* CurrentScene )
   while (!glfwWindowShouldClose(MainWindow))
   {
     glfwSetKeyCallback(MainWindow, Camera::KeyCallback);
+    glfwSetCursorPosCallback(MainWindow, Camera::MouseCallback);
+    glfwSetInputMode(MainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+
     glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(cam.getCameraMatrix()));
     glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(Projection));
 
