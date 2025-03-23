@@ -59,7 +59,7 @@ void KroozOBJ::setScale(float& value)
 {
   ModelMatrix = glm::scale(ModelMatrix, glm::vec3(value));
 }
-void KroozOBJ::setRotation(float& value)
+void KroozOBJ::setRotation(float value)
 {
   ModelMatrix = glm::rotate(ModelMatrix,glm::radians(value) ,glm::vec3(0.0f,1.0f,0.0f));
 

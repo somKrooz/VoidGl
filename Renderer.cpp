@@ -2,7 +2,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+#include  <Camera.h>
 
 
 Renderer::Renderer()
@@ -29,8 +29,7 @@ Renderer::Renderer()
   Projection = glm::perspective(glm::radians(45.0f), (float)1280 / (float)720, 0.1f, 100.0f);
   glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 10.0f);
 
-  View = glm::lookAt(cameraPos, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
+  CurrentCamera = &cam;
   glfwSetWindowAttrib(MainWindow ,  GLFW_RESIZABLE, GL_FALSE);
 }
 
@@ -40,12 +39,19 @@ void Renderer::MainLoop(GLuint ShaderProgram ,Scene* CurrentScene )
   glm::vec3 lightPos(3.0f, 5.0f, 2.0f);
   glm::vec3 viewPos(0.0f, 0.0f, 0.0f);
 
+  float before = static_cast<float>(glfwGetTime());
+
   while (!glfwWindowShouldClose(MainWindow))
   {
-    glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(View));
+    glfwSetKeyCallback(MainWindow, Camera::KeyCallback);
+    glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(cam.getCameraMatrix()));
     glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(Projection));
 
+    float Current = static_cast<float>(glfwGetTime());
+    float deltatime = Current - before;
+    before = Current;
 
+    cam.UpdateCamera(deltatime);
     //Later Remove
     glUniform3fv(glGetUniformLocation(ShaderProgram, "lightPos"), 1, glm::value_ptr(lightPos));
     glUniform3fv(glGetUniformLocation(ShaderProgram, "viewPos"), 1, glm::value_ptr(viewPos));

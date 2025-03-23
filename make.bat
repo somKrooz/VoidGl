@@ -4,7 +4,7 @@ setlocal
 set OUTDIR=build
 set OUT=%OUTDIR%\KroozEngine.exe
 
-set SRC=KroozMain.cpp Obj.cpp Renderer.cpp Scene.cpp Shader.cpp Buffer.cpp
+set SRC=KroozMain.cpp Obj.cpp Renderer.cpp Scene.cpp Shader.cpp Buffer.cpp Camera.cpp
 
 
 REM Compiler flags

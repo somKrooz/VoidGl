@@ -59,7 +59,6 @@ void KroozShader::ShaderFromFile(std::string Vert, std::string Frag)
     glCompileShader(fragmentShader);
 
 
-
     // Link Shaders into Program
     ShaderProgam = glCreateProgram();
     glAttachShader(ShaderProgam, vertexShader);
