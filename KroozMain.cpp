@@ -4,29 +4,33 @@
 
 int main()
 {
-  Renderer* KroozRenderer = new Renderer();
-  Scene* KroozScene = new Scene();
+    Renderer* KroozRenderer = new Renderer();
+    Scene* KroozScene = new Scene();
 
-  KroozOBJ animeModel;
-  animeModel.LoadOBJ("Assets/anime.obj");
-
-  KroozOBJ CarModel;
-  CarModel.LoadOBJ("Assets/Car.obj");
-
-  KroozOBJ AnimeAgain;
-  AnimeAgain.LoadOBJ("Assets/anime.obj");
-  AnimeAgain.setTranslation(glm::vec3(0.0f,0.0f,2.0f));
-  AnimeAgain.setRotation(180.0f);
-
-  KroozShader shader;
-  shader.ShaderFromFile("Shaders/Vertex.glsl" , "Shaders/Fragment.glsl");
-
-  KroozScene->AddObjects(std::make_unique<KroozOBJ>(CarModel));
-  KroozScene->AddObjects(std::make_unique<KroozOBJ>(animeModel));
-  KroozScene->AddObjects(std::make_unique<KroozOBJ>(AnimeAgain));
+    KroozShader shader1;
+    shader1.ShaderFromFile("Shaders/Vertex.glsl", "Shaders/Fragment.glsl");
 
 
-  KroozRenderer->MainLoop(shader.getShaderProgram(),KroozScene);
+    KroozShader shader3;
+    shader3.ShaderFromFile("Shaders/Vertex.glsl", "Shaders/Fragment.glsl");
 
-  return 0;
+    KroozOBJ carModel;
+    carModel.LoadOBJ("Assets/Car.obj");
+    carModel.setShaderProgram(shader1.getShaderProgram());
+    carModel.setShader(glm::vec3(1.0f,1.0f,1.0f));
+
+
+    KroozOBJ anime;
+    anime.LoadOBJ("Assets/anime.obj");
+    anime.setTranslation(glm::vec3(0.0f, 0.0f, 2.0f));
+    anime.setRotation(180.0f);
+    anime.setShaderProgram(shader3.getShaderProgram());
+    anime.setShader(glm::vec3(1.0f,1.0f,1.0f));
+
+    KroozScene->AddObjects(std::make_unique<KroozOBJ>(carModel));
+    KroozScene->AddObjects(std::make_unique<KroozOBJ>(anime));
+
+    KroozRenderer->MainLoop(KroozScene);
+
+    return 0;
 }

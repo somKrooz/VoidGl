@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Gl/glew.h>
 #include <string>
 #include <iostream>

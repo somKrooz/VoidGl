@@ -15,20 +15,25 @@ void Scene::AddObjects(std::unique_ptr<KroozOBJ> obj)
   }
 }
 
-bool Scene::RenderEveryThing(GLuint MatrixLocation)
+bool Scene::RenderEveryThing(GLuint defaultMatrixLocation)
 {
-  if(Objects.size() > 0)
-  {
-    for(auto &obj : Objects)
+    if(Objects.size() > 0)
     {
-      glUniformMatrix4fv(MatrixLocation, 1, GL_FALSE, glm::value_ptr(obj->getModelMatrix()));
-      obj->Final();
-    }
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+        for(auto &obj : Objects)
+        {
 
+            GLuint currentProgram = obj->getShader();
+            glUseProgram(currentProgram);
+
+
+            GLuint matrixLocation = glGetUniformLocation(currentProgram, "model");
+            glUniformMatrix4fv(matrixLocation, 1, GL_FALSE, glm::value_ptr(obj->getModelMatrix()));
+            obj->Final();
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

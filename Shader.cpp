@@ -1,7 +1,6 @@
 #include <Default.hh>
 #include <Shader.h>
 
-
 #include <fstream>
 #include <sstream>
 

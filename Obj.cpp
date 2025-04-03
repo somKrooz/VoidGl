@@ -2,11 +2,15 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include <tiny_obj_loader.h>
 #include <iostream>
-
+#include <filesystem>
 #include <glm/gtc/matrix_transform.hpp>
+
 
 bool KroozOBJ::LoadOBJ(const std::string &path)
 {
+  std::string FinalName = FactorName(path);
+  this->names = FinalName;
+
   tinyobj::attrib_t attrb;
   std::vector<tinyobj::shape_t> shapes;
   std::vector<tinyobj::material_t> mat;
@@ -55,21 +59,41 @@ void KroozOBJ::Final()
   buffer.Draw();
 }
 
-void KroozOBJ::setScale(float& value)
-{
-  ModelMatrix = glm::scale(ModelMatrix, glm::vec3(value));
+
+void KroozOBJ::setTranslation( glm::vec3& value) {
+  position = value;
+  updateModelMatrix();
 }
-void KroozOBJ::setRotation(float value)
-{
-  ModelMatrix = glm::rotate(ModelMatrix,glm::radians(value) ,glm::vec3(0.0f,1.0f,0.0f));
+
+void KroozOBJ::setRotation(float value) {
+  rotation = value;
+  updateModelMatrix();
+}
+
+void KroozOBJ::setScale(float &value) {
+  scale = value;
+  updateModelMatrix();
+}
+
+void KroozOBJ::updateModelMatrix() {
+
+    this->ModelMatrix = glm::mat4(1.0f);
+
+    this->ModelMatrix = glm::translate(ModelMatrix, position);
+    this->ModelMatrix = glm::rotate(ModelMatrix, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
+    this->ModelMatrix = glm::scale(ModelMatrix, glm::vec3(scale));
 
 }
-void KroozOBJ::setTranslation(glm::vec3 &value)
-{
-  ModelMatrix = glm::translate(ModelMatrix , value);
-}
+
 
 glm::mat4 KroozOBJ::getModelMatrix()
 {
   return ModelMatrix;
+}
+
+std::string KroozOBJ::FactorName(std::string name)
+{
+  std::filesystem::path filePath(name);
+  std::string fileName = filePath.filename().string();
+  return fileName;
 }

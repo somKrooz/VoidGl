@@ -13,5 +13,5 @@ private:
   Camera cam;
 public:
   Renderer();
-  void MainLoop(GLuint ShaderProgram , Scene* CurrentScene);
+  void MainLoop( Scene* CurrentScene);
 };
